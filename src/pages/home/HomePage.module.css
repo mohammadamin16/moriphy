@@ -1,0 +1,10 @@
+/* a title that had a gradiant effect like apple website */
+.title {
+  background: linear-gradient(to right, #ff8a00, #da1b60);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
