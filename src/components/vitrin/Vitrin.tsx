@@ -2,7 +2,8 @@ import gsap from "gsap";
 import styles from "./Vitrin.module.css";
 import { useGSAP } from "@gsap/react";
 import { Product } from "../../api/products";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface VitrinProductProps {
   product: Product;
@@ -44,8 +45,12 @@ export function VitrinRow(props: VitrinRowProps) {
 }
 
 export function VitrinProduct(props: VitrinProductProps) {
+  const navigate = useNavigate();
+  const onClick = useCallback(() => {
+    navigate(`/search/${props.product.title}`);
+  }, []);
   return (
-    <div className={styles.product}>
+    <div onClick={onClick} className={styles.product}>
       <img src={props.product.image} alt={props.product.title} />
     </div>
   );
