@@ -1,10 +1,13 @@
+.container {
+  overflow: hidden;
+}
+
 .vitrin {
   display: flex;
   flex-direction: row;
   margin-top: 12px;
   gap: 12px;
   /* border: 1px solid red; */
-  overflow: hidden;
 }
 
 .product {

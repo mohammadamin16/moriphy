@@ -8,14 +8,16 @@ import { useMemo } from "react";
 export function HomePage() {
   const products = useProducts();
   const productsPartOne = useMemo(() => products.list.slice(0, 10), [products]);
-  const productsPartTwo = useMemo(() => products.list.slice(10, 20), [products]);
+  const productsPartTwo = useMemo(() => products.list.slice(10, 20), [
+    products,
+  ]);
   return (
     <div>
       <Header />
       <p className={styles.title}>Moriphy!</p>
       <SearchBar />
-      <VitrinRow products={productsPartOne} />
-      <VitrinRow products={productsPartTwo} />
+      <VitrinRow direction="right" products={productsPartOne} />
+      <VitrinRow direction="left" products={productsPartTwo} />
     </div>
   );
 }

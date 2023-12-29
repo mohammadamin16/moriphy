@@ -1,15 +1,23 @@
 import styles from "./Header.module.css";
 import cartIcon from "../../assets/cart.svg";
 import heartIcon from "../../assets/heart.svg";
-import { useState } from "react";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   showLogo?: boolean;
 }
 export function Header(props: Props) {
+  const navigate = useNavigate();
+  const goToHome = useCallback(() => {
+    navigate("/");
+  }, []);
   return (
     <header className={styles.container}>
-      <span style={{ visibility: props.showLogo ? "visible" : "hidden" }}>
+      <span
+        onClick={goToHome}
+        style={{ visibility: props.showLogo ? "visible" : "hidden" }}
+      >
         Moriphy
       </span>
       <div className={styles.icons}>
