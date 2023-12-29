@@ -1,13 +1,37 @@
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Searchbar.module.css";
+import { useCallback, useState } from "react";
+import searchIcon from "../../assets/search.svg";
+
 export function SearchBar() {
+  const { query } = useParams<{ query: string }>();
+  const navigate = useNavigate();
+
+  const [searchInput, setSearchInput] = useState(query);
+  const onInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchInput(e.target.value);
+    },
+    []
+  );
+  const onSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      console.log(searchInput);
+      navigate(`/search/${searchInput}`);
+    },
+    [searchInput] // eslint-disable-line react-hooks/exhaustive-deps
+  );
+
   return (
-    <div className={styles.container}>
-      <img
-        className={styles.search_icon}
-        src="https://img.icons8.com/ios-filled/50/000000/search--v1.png"
-        alt="search"
+    <form onSubmit={onSubmit} className={styles.container}>
+      <img className={styles.search_icon} src={searchIcon} alt="search" />
+      <input
+        type="search"
+        placeholder="Search"
+        value={searchInput}
+        onChange={onInputChange}
       />
-      <input type="text" placeholder="Search..." />
-    </div>
+    </form>
   );
 }

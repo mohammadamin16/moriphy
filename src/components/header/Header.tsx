@@ -3,11 +3,13 @@ import cartIcon from "../../assets/cart.svg";
 import heartIcon from "../../assets/heart.svg";
 import { useState } from "react";
 
-export function Header() {
-  const [showLogo, setShowLogo] = useState(false);
+interface Props {
+  showLogo?: boolean;
+}
+export function Header(props: Props) {
   return (
     <header className={styles.container}>
-      <span style={{ visibility: showLogo ? "visible" : "hidden" }}>
+      <span style={{ visibility: props.showLogo ? "visible" : "hidden" }}>
         Moriphy
       </span>
       <div className={styles.icons}>
