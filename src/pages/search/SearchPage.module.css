@@ -1,1 +1,8 @@
-.container{}
+.products_container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Adjust minmax and column size as needed */
+  gap: 10px; /* Add spacing between result items */
+}
