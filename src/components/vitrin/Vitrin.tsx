@@ -1,31 +1,27 @@
+import { Product } from "../../api/products";
 import styles from "./Vitrin.module.css";
 
 interface VitrinProductProps {
-  id: number;
+  product: Product;
 }
 
-export function VitrinRow() {
-  const vitrinProducts = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-    { id: 8 },
-  ];
+interface VitrinRowProps {
+  products: Product[];
+}
+export function VitrinRow(props: VitrinRowProps) {
   return (
     <div className={styles.vitrin}>
-      {vitrinProducts.map((product) => (
-        <VitrinProduct 
-        key={product.id}
-        id={product.id} />
+      {props.products.map((p) => (
+        <VitrinProduct key={p.id} product={p} />
       ))}
     </div>
   );
 }
 
 export function VitrinProduct(props: VitrinProductProps) {
-  return <div className={styles.product}>{props.id}</div>;
+  return (
+    <div className={styles.product}>
+      <img src={props.product.image} alt={props.product.title} />
+    </div>
+  );
 }
