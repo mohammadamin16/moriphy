@@ -1,7 +1,53 @@
 .container {
   position: relative;
-  border: 1px solid #e5e5e5;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container img {
+  width: 100%;
+  border-radius: 12px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  /* set a filter for the image to give white pixels some color */
+  filter: brightness(0.9);
+}
+
+.container span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  font-size: small;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.float {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 10px;
+  top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.float div {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #2828284d;
+}
+
+.float div img{
+
+  width: 20px;
+  height: 20px;
 }
